@@ -1,5 +1,8 @@
 
 public class Lexer {
+	// next char
+	char lookahead;
+	
 	//Statements -> Statement ; Statements | end
 	void Statements(){
 		
