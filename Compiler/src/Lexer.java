@@ -3,8 +3,6 @@ public class Lexer {
 	// next char
 	char lookahead;
 	
-	///HÆ SÆTA!!!!!!!!!!!!!!!!!!!!! 
-	
 	//Statements -> Statement ; Statements | end
 	void Statements(){
 		
