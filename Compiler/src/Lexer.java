@@ -21,7 +21,7 @@ public class Lexer {
 	//private String currentLex;
 	  StringBuilder sb = new StringBuilder(100);
 	  int charIndex = 0;
-	  
+	   
 	
 	public void nextToken(){
 		
