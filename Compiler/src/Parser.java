@@ -1,6 +1,6 @@
 /*
  *  Implement the class Parser, the syntax analyzer (parser). 
- *  This should be a top-down recursivedescent parser for the grammar G above. 
+ *  This should be a top-down recursive descent parser for the grammar G above. 
  *  The output of the parser is the stack-based intermediate code S, corresponding to the given program, 
  *  written to standard output (stdout). 
  *  If the expression is not in the language (or if an ERROR token is returned by the Lexer) 
