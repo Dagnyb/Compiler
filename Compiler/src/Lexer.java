@@ -32,7 +32,7 @@ public class Lexer {
 		
 	}
 	
-	private Token.TokenCode lookup(String lexeme){    //Soða betur
+	private Token.TokenCode lookup(String lexeme){    //Soða betur 
 		
 		Token.TokenCode returnValue = null;
 		
