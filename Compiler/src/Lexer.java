@@ -27,4 +27,8 @@ public class Lexer {
 	void Factor(){
 		
 	}
+	
+	 public static void main(String[] args) {
+		 
+	 }
 }
