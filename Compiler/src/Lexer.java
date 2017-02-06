@@ -1,3 +1,4 @@
+
 /*
  *  Implement the class Lexer, a lexical analyzer. 
  *  It should contain a public method, nextToken(), which scans the standard input (stdin), 
@@ -31,9 +32,58 @@ public class Lexer {
 		
 	}
 	
-	private Token lookup(String lexeme){
+	private Token.TokenCode lookup(String lexeme){    //Soða betur
 		
-		Token returnValue = null;
+		Token.TokenCode returnValue = null;
+		
+		if(lexeme.equals("="))
+		{
+			returnValue = Token.TokenCode.ASSIGN;
+		}
+		else if(lexeme.equals(";"))
+		{
+			returnValue = Token.TokenCode.SEMICOL;
+		}
+		else if(lexeme.equals("+"))
+		{
+			returnValue = Token.TokenCode.ADD;
+		}
+		else if(lexeme.equals("-"))
+		{
+			returnValue = Token.TokenCode.SUB;
+		}
+		else if(lexeme.equals("*"))
+		{
+			returnValue = Token.TokenCode.MULT;
+		}
+		else if(lexeme.equals("("))
+		{
+			returnValue = Token.TokenCode.LPAREN;
+		}
+		else if(lexeme.equals(")"))
+		{
+			returnValue = Token.TokenCode.RPAREN;
+		}
+		else if(lexeme.equals("print"))
+		{
+			returnValue = Token.TokenCode.PRINT;
+		}
+		else if(lexeme.equals("end"))
+		{
+			returnValue = Token.TokenCode.END;
+		}
+		else if(Character.isDigit(lexeme.charAt(0)))     //Líklega þarf að laga
+		{
+			returnValue = Token.TokenCode.ID;
+		}
+		else if(Character.isLetter(lexeme.charAt(0)))   //Líklega þarf að laga
+		{
+			returnValue = Token.TokenCode.INT;
+		}
+		else
+		{
+			returnValue = Token.TokenCode.ERROR;
+		}
 		
 		return returnValue;
 	}
