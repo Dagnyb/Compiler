@@ -14,7 +14,7 @@ public class Token {
 	enum TokenCode { ID, ASSIGN, SEMICOL, INT, ADD, SUB,
 		MULT, LPAREN, RPAREN, PRINT, END, ERROR }
 	
-	enum Caracter { LETTER, DIGIT}   //Veit ekkert hvað ég er að gera ;)
+	enum Caracter { LETTER, DIGIT}   //Veit ekkert hvað ég er að gera ;) 
 	
 	public String lexeme;
 	public TokenCode tCode;
