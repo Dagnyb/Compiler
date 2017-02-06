@@ -17,8 +17,8 @@
 
 
 public class Lexer {
-	// next char
-	char lookahead;
+	private char nextChar;
+	private String currentLex;
 	
 	public void nextToken(){
 		
