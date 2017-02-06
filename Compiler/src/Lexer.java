@@ -19,6 +19,10 @@ public class Lexer {
 	// next char
 	char lookahead;
 	
+	public void nextToken(){
+		
+	}
+	
 	 public static void main(String[] args) {
 		 
 	 }
