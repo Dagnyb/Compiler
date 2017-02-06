@@ -17,18 +17,23 @@
 
 public class Lexer {
 	private char nextChar;
-	private String currentLex;
+	//private String currentLex;
+	  StringBuilder sb = new StringBuilder(100);
+	  int charIndex = 0;
+	  
 	
 	public void nextToken(){
 		
 	}
 	
 	private void addChar(){
-		
+		//currentLex = currentLex + nextChar;
+		sb.append(nextChar).toString();
 	}
 	
 	private void getChar(){
-		
+		nextChar = sb.charAt(charIndex);
+		charIndex++;
 	}
 	
 	private Token lookup(String lexeme){
