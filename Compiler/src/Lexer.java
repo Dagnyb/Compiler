@@ -23,6 +23,21 @@ public class Lexer {
 		
 	}
 	
+	private void addChar(){
+		
+	}
+	
+	private void getChar(){
+		
+	}
+	
+	private Token lookup(String lexeme){
+		
+		Token returnValue = null;
+		
+		return returnValue;
+	}
+	
 	 public static void main(String[] args) {
 		 
 	 }
