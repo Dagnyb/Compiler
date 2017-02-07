@@ -1,4 +1,4 @@
-
+import java.io.*;
 /*
  *  Implement the class Lexer, a lexical analyzer. 
  *  It should contain a public method, nextToken(), which scans the standard input (stdin), 
@@ -18,26 +18,58 @@
 
 public class Lexer {
 	private char nextChar;
+	private BufferedReader reader;
 	//private String currentLex;
 	  StringBuilder sb = new StringBuilder(100);
 	  int charIndex = 0;
-	   
+	  
+	  public Lexer(){
+		Reader isReader = new InputStreamReader(System.in);		// Til að lesa inn Streng frá input
+		reader = new BufferedReader(isReader);					// Bufferar char fyrir char
+		
+		getChar();  
+	  }
+	  
 	
 	public void nextToken(){
+		Token next = new Token();
 		
+		if(Character.isDigit(nextChar)){		// Sé ekki hvernig við getum skilað Token, þarf að skoða
+		while(Character.isDigit(nextChar)){
+			addChar();
+			getChar();
+		}
+		//next.tCode = Token.tCode.ID;
+		}
+		
+		while(Character.isLetter(nextChar)){
+			addChar();
+			getChar();
+		}
 	}
 	
 	private void addChar(){
-		//currentLex = currentLex + nextChar;
+		//currentLex = currentLex + nextChar;  // maybe better than StringBuilder...
 		sb.append(nextChar).toString();
+		getChar();
 	}
 	
 	private void getChar(){
-		nextChar = sb.charAt(charIndex);
-		charIndex++;
+		try {
+			if (reader.read() == -1)
+			return; // Arrived at EOF
+		} catch (IOException e) {
+			//TODO...
+			e.printStackTrace();
+		}
+		
+	nextChar = sb.charAt(charIndex);
+	charIndex++;
+	
 	}
 	
-	private Token.TokenCode lookup(String lexeme){    //Soða betur 
+	
+	private Token.TokenCode lookup(String lexeme){    //Skoða betur 
 		
 		Token.TokenCode returnValue = null;
 		
