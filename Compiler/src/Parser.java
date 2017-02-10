@@ -20,4 +20,14 @@ public class Parser {
     	
     	
     }
+    
+    public void parser(){
+    	
+    }
+    
+    private void Error(){
+    	
+    	System.out.println("Syntax error!");    // Error massage
+        System.exit(0);							// And then immediately quit
+    }
 }
