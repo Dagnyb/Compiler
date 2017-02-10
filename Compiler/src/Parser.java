@@ -22,10 +22,16 @@ public class Parser {
     }
     
     public void parser(){
+    	token = nextToken();
     	
     }
     
-    private void Error(){
+    private Token nextToken() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private void Error(){
     	
     	System.out.println("Syntax error!");    // Error massage
         System.exit(0);							// And then immediately quit
