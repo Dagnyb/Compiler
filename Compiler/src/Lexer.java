@@ -31,7 +31,7 @@ public class Lexer {
 	  }
 	  
 	
-	public void nextToken(){
+	public Token nextToken(){
 		Token next = new Token();
 		
 		if(Character.isDigit(nextChar)){		// Sé ekki hvernig við getum skilað Token, þarf að skoða
@@ -46,6 +46,7 @@ public class Lexer {
 			addChar();
 			getChar();
 		}
+		return null;
 	}
 	
 	private void addChar(){

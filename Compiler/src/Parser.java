@@ -1,5 +1,7 @@
 import java.util.*;
 
+import Token.TokenCode;
+
 /*
  *  Implement the class Parser, the syntax analyzer (parser). 
  *  This should be a top-down recursive descent parser for the grammar G above. 
@@ -31,7 +33,10 @@ public class Parser {
     
     private Token nextToken() {
 		// TODO Auto-generated method stub
-		return null;
+    	Token tempToken = new Token();
+    	tempToken = lexer.nextToken();
+    	
+		return tempToken;
 	}
 
 	private void Error(){
@@ -45,8 +50,11 @@ public class Parser {
 		
 	}
 	
-	private void  Term(){
-		if(Character.isDigit((char)lookahead)){
+	private void Term(){
+		if(token.tCode == Token.TokenCode.ID){
+			
+		}
+		else if(token.tCode == Token.TokenCode.INT){
 			
 		}
 		else{
