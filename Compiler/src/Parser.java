@@ -1,3 +1,5 @@
+import java.util.*;
+
 /*
  *  Implement the class Parser, the syntax analyzer (parser). 
  *  This should be a top-down recursive descent parser for the grammar G above. 
@@ -15,6 +17,7 @@
 public class Parser {
 	private Lexer lexer;
     private Token token;
+    private Stack<Token> lookahead;
     
     public Parser(Lexer lexer){
     	
@@ -36,4 +39,42 @@ public class Parser {
     	System.out.println("Syntax error!");    // Error massage
         System.exit(0);							// And then immediately quit
     }
+	
+	private void stat(){
+		
+		
+	}
+	
+	private void  Term(){
+		if(Character.isDigit((char)lookahead)){
+			
+		}
+		else{
+			Error();
+		}
+	}
+	
+	private void Expr(){
+		Term();
+		rest();
+		
+	}
+
+	private void rest() {
+		// TODO Auto-generated method stub
+		if(token.tCode == Token.TokenCode.ADD){
+			if(!lookahead.isEmpty()){
+				if(lookahead.peek().tCode == Token.TokenCode.MULT){
+					
+				}
+			}
+		}
+		
+		else if(token.tCode == Token.TokenCode.SUB){
+			
+		}
+		//Ekki viss hvort eitthvað ætti að vera hérna
+	}
+	
+	
 }
