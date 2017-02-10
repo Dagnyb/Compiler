@@ -13,5 +13,11 @@
  *	for initiating the parse – other methods are private.
  */
 public class Parser {
-
+	private Lexer lexer;
+    private Token token;
+    
+    public Parser(Lexer lexer){
+    	
+    	
+    }
 }
