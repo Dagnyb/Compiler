@@ -1,7 +1,5 @@
 import java.util.*;
 
-import Token.TokenCode;
-
 /*
  *  Implement the class Parser, the syntax analyzer (parser). 
  *  This should be a top-down recursive descent parser for the grammar G above. 
@@ -39,50 +37,59 @@ public class Parser {
 		return tempToken;
 	}
 
+	
+	private void Statements(){
+		Statement();
+		
+		//Statements();
+		
+		
+	}
+	
+	private void Statement(){
+		if(token.tCode == Token.TokenCode.ID){
+			
+		}
+		/*else if(token.tCode == Token.TokenCode.INT){
+			
+		}
+		else{
+			Error();
+		}*/
+	}
+	
+	private void Expr(){
+		Term();
+		// TODO Auto-generated method stub
+		if(token.tCode == Token.TokenCode.ADD){
+			if(!lookahead.isEmpty()){
+				if(lookahead.peek().tCode == Token.TokenCode.MULT){
+							
+				}
+			}
+		}
+				
+				else if(token.tCode == Token.TokenCode.SUB){
+					
+				}
+				//Ekki viss hvort eitthvað ætti að vera hérna
+		
+		
+	}
+	
+	private void Term(){
+		
+	}
+	
+	private void Factor(){
+		
+	}
+	
 	private void Error(){
     	
     	System.out.println("Syntax error!");    // Error massage
         System.exit(0);							// And then immediately quit
     }
 	
-	private void stat(){
 		
-		
-	}
-	
-	private void Term(){
-		if(token.tCode == Token.TokenCode.ID){
-			
-		}
-		else if(token.tCode == Token.TokenCode.INT){
-			
-		}
-		else{
-			Error();
-		}
-	}
-	
-	private void Expr(){
-		Term();
-		rest();
-		
-	}
-
-	private void rest() {
-		// TODO Auto-generated method stub
-		if(token.tCode == Token.TokenCode.ADD){
-			if(!lookahead.isEmpty()){
-				if(lookahead.peek().tCode == Token.TokenCode.MULT){
-					
-				}
-			}
-		}
-		
-		else if(token.tCode == Token.TokenCode.SUB){
-			
-		}
-		//Ekki viss hvort eitthvað ætti að vera hérna
-	}
-	
-	
 }
