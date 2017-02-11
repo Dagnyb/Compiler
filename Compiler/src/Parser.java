@@ -17,31 +17,48 @@ import java.util.*;
 public class Parser {
 	private Lexer lexer;
     private Token token;
-    private Stack<Token> lookahead;
+    private ArrayList <String> intermediate;
+    private Stack <Token> intermed; 
     
-    public Parser(Lexer lexer){
+    
+    
+   /*public Parser(Lexer lexer){
     	
     	
-    }
+    }*/
     
     public void parser(){
     	token = nextToken();
+    	Statements();
     	
     }
     
     private Token nextToken() {
-		// TODO Auto-generated method stub
     	Token tempToken = new Token();
     	tempToken = lexer.nextToken();
     	
-		return tempToken;
+    	if(tempToken.tCode == Token.TokenCode.ERROR){
+    		Error();
+    	}
+    	return tempToken;
 	}
 
 	
 	private void Statements(){
 		Statement();
+		if(token.tCode == Token.TokenCode.SEMICOL){
+			Token temp;
+			/*while(!intermediate.isEmpty()){
+				temp = intermediate.;
+				intermed.add(GetCode(temp.tCode()))
+			}*/
+			token = nextToken();
+		}
+		else if(token.tCode == Token.TokenCode.END){
+			
+		}
 		
-		//Statements();
+	
 		
 		
 	}
@@ -49,6 +66,17 @@ public class Parser {
 	private void Statement(){
 		if(token.tCode == Token.TokenCode.ID){
 			
+			if(token.tCode == Token.TokenCode.ASSIGN){
+				
+				Expr();
+			}
+			
+			else if(token.tCode == Token.TokenCode.PRINT){
+				
+				if(token.tCode == Token.TokenCode.ID){
+					
+				}
+			}
 		}
 		/*else if(token.tCode == Token.TokenCode.INT){
 			
@@ -60,28 +88,53 @@ public class Parser {
 	
 	private void Expr(){
 		Term();
-		// TODO Auto-generated method stub
-		if(token.tCode == Token.TokenCode.ADD){
-			if(!lookahead.isEmpty()){
-				if(lookahead.peek().tCode == Token.TokenCode.MULT){
-							
-				}
+		/*if(token.tCode == Token.TokenCode.ADD){
+			while(??.peek().tCode == Token.TokenCode.MULT){
+				intermediate.add(??.pop().tCode.toString());
 			}
+			
+			??.push(token);
+			Espr();
+			token = nextToken();
 		}
-				
-				else if(token.tCode == Token.TokenCode.SUB){
 					
-				}
+		else if(token.tCode == Token.TokenCode.SUB){
+	            while (??.peek().tCode == Token.TokenCode.MULT){
+	                intermediate.add(ops.pop().tCode.toString());
+	            }
+	            ??.push(token); 
+	            token = nextToken();
+	            Expr();
+		}
 				//Ekki viss hvort eitthvað ætti að vera hérna
-		
+		*/
 		
 	}
 	
 	private void Term(){
+		Factor();
+		/* if(token.tCode == Token.TokenCode.MULT){
+		 * push
+		 * token = nextToken();
+		 * Term();
+		 * }
+		 */
 		
 	}
 	
 	private void Factor(){
+		if(token.tCode == Token.TokenCode.INT){
+			
+		}
+		else if(token.tCode == Token.TokenCode.ID){
+			
+		}
+		else if(token.tCode == Token.TokenCode.LPAREN){
+			
+			if(token.tCode == Token.TokenCode.RPAREN){
+				
+			}
+		}
 		
 	}
 	
@@ -91,5 +144,15 @@ public class Parser {
         System.exit(0);							// And then immediately quit
     }
 	
-		
+	private String GetCode(Token.TokenCode tCode){
+		if(tCode == Token.TokenCode.ADD){
+			return "ADD";
+		}
+		else if(tCode == Token.TokenCode.SUB){
+			return "SUB";
+		}
+		else{
+			return tCode.toString();
+		}
+	}
 }
