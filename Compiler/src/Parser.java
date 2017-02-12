@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 /*
  *  Implement the class Parser, the syntax analyzer (parser). 
  *  This should be a top-down recursive descent parser for the grammar G above. 
@@ -17,15 +18,16 @@ import java.util.*;
 public class Parser {
 	private Lexer lexer;
     private Token token;
-    private ArrayList <String> intermediate;
+    private Stack <String> intermediate;
     private Stack <Token> intermed; 
     
     
     
-   /*public Parser(Lexer lexer){
+   public Parser(Lexer lexer){
+    	intermed = new Stack<Token>();
+    	lexer = lexer;
     	
-    	
-    }*/
+    }
     
     public void parser(){
     	token = nextToken();
@@ -34,13 +36,13 @@ public class Parser {
     }
     
     private Token nextToken() {
-    	Token tempToken = new Token();
-    	tempToken = lexer.nextToken();
+    	Token nextT = new Token();
+    	nextT = lexer.nextToken();
     	
-    	if(tempToken.tCode == Token.TokenCode.ERROR){
+    	if(nextT.tCode == Token.TokenCode.ERROR){
     		Error();
     	}
-    	return tempToken;
+    	return nextT;
 	}
 
 	
@@ -48,78 +50,64 @@ public class Parser {
 		Statement();
 		if(token.tCode == Token.TokenCode.SEMICOL){
 			Token temp;
-			/*while(!intermediate.isEmpty()){
-				temp = intermediate.;
-				intermed.add(GetCode(temp.tCode()))
-			}*/
+			while(!intermed.isEmpty()){
+				temp = intermed.pop();
+				intermediate.add(temp.tCode.toString());
+			}
 			token = nextToken();
 		}
 		else if(token.tCode == Token.TokenCode.END){
 			
-		}
-		
-	
-		
+		}		
 		
 	}
 	
 	private void Statement(){
 		if(token.tCode == Token.TokenCode.ID){
-			
+			intermediate.add("PUSH " + token.lexeme);
+			token = nextToken();
 			if(token.tCode == Token.TokenCode.ASSIGN){
-				
+				intermed.push(token);
+				token = nextToken();
 				Expr();
 			}
 			
 			else if(token.tCode == Token.TokenCode.PRINT){
-				
+				intermed.push(token);
+				token = nextToken();
 				if(token.tCode == Token.TokenCode.ID){
-					
+					intermediate.add("PUSH " + token.lexeme);
+					token = nextToken();
 				}
 			}
-		}
-		/*else if(token.tCode == Token.TokenCode.INT){
-			
-		}
-		else{
-			Error();
-		}*/
+		}		
 	}
 	
 	private void Expr(){
 		Term();
-		/*if(token.tCode == Token.TokenCode.ADD){
-			while(??.peek().tCode == Token.TokenCode.MULT){
-				intermediate.add(??.pop().tCode.toString());
+		if(token.tCode == Token.TokenCode.ADD){
+			while(intermed.peek().tCode == Token.TokenCode.MULT){
+				intermediate.add(intermed.pop().tCode.toString());
 			}
 			
-			??.push(token);
-			Espr();
+			intermed.push(token);
 			token = nextToken();
+			Expr();
+			
 		}
 					
 		else if(token.tCode == Token.TokenCode.SUB){
-	            while (??.peek().tCode == Token.TokenCode.MULT){
-	                intermediate.add(ops.pop().tCode.toString());
+	            while (intermed.peek().tCode == Token.TokenCode.MULT){
+	                intermediate.add(intermed.pop().tCode.toString());
 	            }
-	            ??.push(token); 
+	            intermed.push(token); 
 	            token = nextToken();
 	            Expr();
 		}
-				//Ekki viss hvort eitthvað ætti að vera hérna
-		*/
-		
 	}
 	
 	private void Term(){
-		Factor();
-		/* if(token.tCode == Token.TokenCode.MULT){
-		 * push
-		 * token = nextToken();
-		 * Term();
-		 * }
-		 */
-		
+		Factor();	
 	}
 	
 	private void Factor(){
@@ -144,15 +132,4 @@ public class Parser {
         System.exit(0);							// And then immediately quit
     }
 	
-	private String GetCode(Token.TokenCode tCode){
-		if(tCode == Token.TokenCode.ADD){
-			return "ADD";
-		}
-		else if(tCode == Token.TokenCode.SUB){
-			return "SUB";
-		}
-		else{
-			return tCode.toString();
-		}
-	}
 }
